@@ -5,8 +5,8 @@ The repository of the best Morpion game - Master morpion
 ## 1 - Modes
 
 **'Basique'** - original morpion against the computer or a second player
-> **'Facile'** - Choix de cases aléatoire  
-> **'Normal'** - Utilisation de la "stratégie gagnate"  
+> **'Facile'** - Aleatory positions  
+> **'Normal'** - Best strategy utilisation to win  
   
 **'Master'** - 5x5 morpion on an almost unlimited size map and with specials blocks
 > **'Normal'** - Against computer  
