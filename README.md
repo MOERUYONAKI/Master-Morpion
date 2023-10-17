@@ -1,2 +1,6 @@
-# Master-Morpion
-Jeu de morpion composé de différents modes et différentes difficultés
+# Master morpion
+
+## Readme languages
+
+> [English](https://github.com/MOERUYONAKI/Moeru-s-Empires/blob/main/readme/readme-en.md)  
+> [Français](https://github.com/MOERUYONAKI/Moeru-s-Empires/blob/main/readme/readme-fr.md)  
