@@ -2,5 +2,5 @@
 
 ## Readme languages
 
-> [English](https://github.com/MOERUYONAKI/Moeru-s-Empires/blob/main/readme/readme-en.md)  
-> [Français](https://github.com/MOERUYONAKI/Moeru-s-Empires/blob/main/readme/readme-fr.md)  
+> [English](https://github.com/MOERUYONAKI/Master-Morpion/blob/main/readme/readme_en.md)  
+> [Français](https://github.com/MOERUYONAKI/Master-Morpion/blob/main/readme/readme_fr.md)  
