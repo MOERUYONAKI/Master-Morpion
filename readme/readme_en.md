@@ -19,4 +19,4 @@ History mode for the Master Morpion
 
 ## 3 - Contributors
 
-**Developers** - [MOERUYONAKI](https://github.com/MOERUYONAKI) / []()
+**Developers** - [MOERUYONAKI](https://github.com/MOERUYONAKI) / [Kevin-Sawyer](https://github.com/Kevin-Sawyer)
