@@ -14,6 +14,28 @@ def choix_de_case(size : int):
 
     return f'c{col}_l{lin}'
 
+def check_choice(case : str, cases : list, size : int):
+    ''' Paramètre - case (int) : id de la case à vérifier, cases (list) : listes des cases à vérifier, size (int) : taille de la grille (100 ou 250)
+    Return - "True" si la case est valide, "False" sinon '''
+
+    if cases == []:
+        return True
+    
+    else:
+        for col in range(size):
+            for lin in range(size):
+                if f'c{col}_l{lin}' in cases:
+
+                    # Vérification par colone
+                    if f'c{col - 1}_l{lin}' == case or f'c{col + 1}_l{lin}' == case:
+                        return True
+
+                    # Vérification par ligne
+                    elif f'c{col}_l{lin - 1}' == case or f'c{col}_l{lin + 1}' == case:
+                        return True
+                
+        return False
+
 def check_win(cases : list, size : int):
     ''' Paramètre - cases (list) : listes des cases à vérifier, size (int) : taille de la grille (100 ou 250)
     Return - "True" si la liste est gagnante, "False" sinon '''
@@ -54,7 +76,7 @@ def master_morpion(size : int):
             print(f"\n> Joueur {side} <")
             case_act = choix_de_case(size)
             
-            if case_act not in cases_occupées:
+            if case_act not in cases_occupées and check_choice(case_act, cases_occupées, size):
                 cases_occupées.append(case_act)
 
                 if side == 1:
@@ -81,5 +103,4 @@ def master_morpion(size : int):
     else:
         return master_morpion(100)
 
-# print(master_morpion(100))
-# Manquant : vérification du choix de case (proximité)
+print(master_morpion(100))
