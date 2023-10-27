@@ -14,6 +14,12 @@ def choix_de_case(size : int):
 
     return f'c{col}_l{lin}'
 
+def case_ord(cases : list, size : int):
+    ''' Paramètre - cases (list) : listes des cases à vérifier, size (int) : taille de la grille (100 ou 250)
+    Return - renvoit l'id de la case choisie (str) '''
+
+    
+
 def check_choice(case : str, cases : list, size : int):
     ''' Paramètre - case (int) : id de la case à vérifier, cases (list) : listes des cases à vérifier, size (int) : taille de la grille (100 ou 250)
     Return - "True" si la case est valide, "False" sinon '''
@@ -61,7 +67,7 @@ def check_win(cases : list, size : int):
 
     return False
 
-def master_morpion(size : int):
+def mega_morpion(size : int):
     ''' Paramètre - size (int) : taille de la grille (100 ou 250)
     Return - renvoie l'id du gagnant, "Full" si la partie est bloquée sans vainqueur, ou bien "Erreur" (str) '''
 
@@ -74,7 +80,12 @@ def master_morpion(size : int):
 
         while len(cases_occupées) < 1000 and not check_win(cases_croix, size) and not check_win(cases_rond, size):
             print(f"\n> Joueur {side} <")
-            case_act = choix_de_case(size)
+
+            if side == 1:
+                case_act = choix_de_case(size)
+
+            elif side == 2:
+                case_act = case_ord(cases_occupées, size)
             
             if case_act not in cases_occupées and check_choice(case_act, cases_occupées, size):
                 cases_occupées.append(case_act)
@@ -101,6 +112,6 @@ def master_morpion(size : int):
             return 'Erreur'
 
     else:
-        return master_morpion(100)
+        return mega_morpion(100)
 
-print(master_morpion(100))
+print(mega_morpion(100))
