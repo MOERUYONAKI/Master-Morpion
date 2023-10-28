@@ -105,13 +105,15 @@ def basic_morpion():
 
         if verifier_victoire(plateau, symbole_joueur):
             afficher_plateau(plateau)
-            print("Le joueur a gagné !")
-            break
+            if symbole_joueur == 'X':
+                return 'Croix'
+            
+            elif symbole_joueur == 'O':
+                return 'Rond'
 
         if all(cellule != " " for ligne in plateau for cellule in ligne):
             afficher_plateau(plateau)
-            print("Match nul !")
-            break
+            return 'Full'
 
         symbole_joueur, symbole_ordi = symbole_ordi, symbole_joueur
 
