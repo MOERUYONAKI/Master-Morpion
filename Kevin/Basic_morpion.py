@@ -90,6 +90,8 @@ def basic_morpion():
         else:
             print("Tour de l'ordinateur...")
             ligne, colonne = coup_ordinateur(plateau, symbole_ordi, symbole_joueur)
+            ligne += 1
+            colonne += 1
 
         if ligne < 1 or ligne > 3 or colonne < 1 or colonne > 3:
             print("Coordonnées en dehors du plateau. Veuillez entrer des coordonnées valides.")
