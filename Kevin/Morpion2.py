@@ -42,17 +42,16 @@ def jouer_morpion():
 
         if verifier_victoire(plateau, joueur_actuel):
             afficher_plateau(plateau)
-            print(f"Le joueur {joueur_actuel} a gagné !")
-            return False
+            if joueur_actuel == 'X':
+                return 'Croix'
+            
+            elif joueur_actuel == 'O':
+                return 'Rond'
 
         tour += 1
 
         if tour == 9:
             afficher_plateau(plateau)
-            print("Match nul !")
-            return False
+            return 'Full'
 
         joueur_actuel = "O" if joueur_actuel == "X" else "X"
-
-if __name__ == "__main__":
-    jouer_morpion()
