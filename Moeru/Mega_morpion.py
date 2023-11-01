@@ -7,12 +7,12 @@ def choix_de_case(size : int):
     # Choix de la colone
     col = int(input("Choississez une colone \n> "))
     col = 0 if col < 0 else col
-    col = size if col > size else col
+    col = size - 1 if col >= size else col
 
     # Choix de la ligne
     lin = int(input("Choississez une ligne \n> "))
     lin = 0 if lin < 0 else lin
-    lin = size if lin > size else lin
+    lin = size - 1 if lin >= size else lin
 
     return f'c{col}_l{lin}'
 
@@ -24,7 +24,7 @@ def random_choice_ord(cases : list, size : int):
 
     for col in range(size):
         for lin in range(size):
-            if check_choice(f'c{col}_l{lin}', cases, size):
+            if f'c{col}_l{lin}' not in cases and (f'c{col - 1}_l{lin}' in cases or f'c{col + 1}_l{lin}' in cases or f'c{col}_l{lin - 1}' in cases or f'c{col}_l{lin + 1}' in cases):
                 cases_jouables.append(f'c{col}_l{lin}')
 
     if cases_jouables != []:
@@ -32,8 +32,7 @@ def random_choice_ord(cases : list, size : int):
     
     # Choix par défaut
     else:
-        return 'c1_l1'
-
+        return 'c0_l0'
 
 def choice_ord(cases : list, cases_adv : list, size : int):
     ''' Paramètre - cases (list) : listes des cases occupées, cases_adv (list) : liste des cases de l'adversaire, size (int) : taille de la grille (100 ou 250)
@@ -43,9 +42,10 @@ def choice_ord(cases : list, cases_adv : list, size : int):
 
     for col in range(size):
         for lin in range(size):
-            if check_choice(f'c{col}_l{lin}', cases, size):
+            if f'c{col}_l{lin}' not in cases and (f'c{col - 1}_l{lin}' in cases or f'c{col + 1}_l{lin}' in cases or f'c{col}_l{lin - 1}' in cases or f'c{col}_l{lin + 1}' in cases):
                 cases_jouables.append(f'c{col}_l{lin}')
     
+    print(cases_jouables)
     if cases_jouables != []:
         for col in range(size):
             for lin in range(size):
@@ -90,7 +90,7 @@ def choice_ord(cases : list, cases_adv : list, size : int):
     
     # Choix par défaut
     else:
-        return 'c1_l1'
+        return 'c0_l0'
 
 def check_choice(case : str, cases : list, size : int):
     ''' Paramètre - case (int) : id de la case à vérifier, cases (list) : listes des cases occupées, size (int) : taille de la grille (100 ou 250)
@@ -159,7 +159,8 @@ def mega_morpion(size : int):
 
             elif side == 2:
                 case_act = choice_ord(cases_occupées, cases_croix, size)
-                print('>', case_act)
+            
+            print('>', case_act)
             
             if case_act not in cases_occupées and check_choice(case_act, cases_occupées, size):
                 cases_occupées.append(case_act)
