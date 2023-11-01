@@ -1,3 +1,5 @@
+import random as rdm
+
 def choix_de_case(size : int):
     ''' Paramètre - size (int) : taille de la grille (100 ou 250)
     Return - renvoit l'id de la case choisie (str) '''
@@ -14,14 +16,84 @@ def choix_de_case(size : int):
 
     return f'c{col}_l{lin}'
 
-def case_ord(cases : list, size : int):
-    ''' Paramètre - cases (list) : listes des cases à vérifier, size (int) : taille de la grille (100 ou 250)
+def random_choice_ord(cases : list, size : int):
+    ''' Paramètre - cases (list) : listes des cases occupées, size (int) : taille de la grille (100 ou 250)
     Return - renvoit l'id de la case choisie (str) '''
 
+    cases_jouables = []
+
+    for col in range(size):
+        for lin in range(size):
+            if check_choice(f'c{col}_l{lin}', cases, size):
+                cases_jouables.append(f'c{col}_l{lin}')
+
+    if cases_jouables != []:
+        return rdm.choice(cases_jouables)
     
+    # Choix par défaut
+    else:
+        return 'c1_l1'
+
+
+def choice_ord(cases : list, cases_adv : list, size : int):
+    ''' Paramètre - cases (list) : listes des cases occupées, cases_adv (list) : liste des cases de l'adversaire, size (int) : taille de la grille (100 ou 250)
+    Return - renvoit l'id de la case choisie de manière aléatoire (str) '''
+
+    cases_jouables = []
+
+    for col in range(size):
+        for lin in range(size):
+            if check_choice(f'c{col}_l{lin}', cases, size):
+                cases_jouables.append(f'c{col}_l{lin}')
+    
+    if cases_jouables != []:
+        for col in range(size):
+            for lin in range(size):
+                if f'c{col}_l{lin}' in cases_adv:
+                    # - Tests défensifs
+
+                    # Test colone
+                    if f'c{col - 1}_l{lin}' in cases_adv and f'c{col - 2}_l{lin}' in cases_adv:
+                        if f'c{col - 3}_l{lin}' in cases_jouables:
+                            return f'c{col - 3}_l{lin}'
+                        
+                        elif f'c{col + 1}_l{lin}' in cases_jouables:
+                            return f'c{col + 1}_l{lin}'
+                    
+                    # Test ligne
+                    elif f'c{col}_l{lin + 1}' in cases_adv and f'c{col}_l{lin + 2}' in cases_adv:
+                        if f'c{col}_l{lin + 3}' in cases_jouables:
+                            return f'c{col}_l{lin + 3}'
+                        
+                        elif f'c{col}_l{lin - 1}' in cases_jouables:
+                            return f'c{col}_l{lin - 1}'
+                    
+                    # Test diagonal gauche
+                    elif f'c{col + 1}_l{lin - 1}' in cases_adv and f'c{col + 2}_l{lin - 2}' in cases_adv:
+                        if f'c{col + 3}_l{lin - 3}' in cases_jouables:
+                            return f'c{col + 3}_l{lin - 3}'
+                        
+                        elif f'c{col - 1}_l{lin + 1}' in cases_jouables:
+                            return f'c{col - 1}_l{lin + 1}'
+                    
+                    # Test diagonal droite
+                    elif f'c{col + 1}_l{lin + 1}' in cases_adv and f'c{col + 2}_l{lin + 2}' in cases_adv:
+                        if f'c{col + 3}_l{lin + 3}' in cases_jouables:
+                            return f'c{col + 3}_l{lin + 3}'
+                        
+                        elif f'c{col - 1}_l{lin - 1}' in cases_jouables:
+                            return f'c{col - 1}_l{lin - 1}'
+
+                    # Choix offensif aléatoire
+                    else:
+                        return random_choice_ord(cases, size)
+    
+    # Choix par défaut
+    else:
+        return 'c1_l1'
 
 def check_choice(case : str, cases : list, size : int):
-    ''' Paramètre - case (int) : id de la case à vérifier, cases (list) : listes des cases à vérifier, size (int) : taille de la grille (100 ou 250)
+    ''' Paramètre - case (int) : id de la case à vérifier, cases (list) : listes des cases occupées, size (int) : taille de la grille (100 ou 250)
     Return - "True" si la case est valide, "False" sinon '''
 
     if cases == []:
@@ -49,6 +121,7 @@ def check_win(cases : list, size : int):
     for col in range(size):
         for lin in range(size):
             if f'c{col}_l{lin}' in cases:
+
                 # Test colone
                 if f'c{col - 1}_l{lin}' in cases and f'c{col - 2}_l{lin}' in cases and f'c{col - 3}_l{lin}' in cases and f'c{col - 4}_l{lin}' in cases:
                     return True
@@ -85,7 +158,8 @@ def mega_morpion(size : int):
                 case_act = choix_de_case(size)
 
             elif side == 2:
-                case_act = case_ord(cases_occupées, size)
+                case_act = choice_ord(cases_occupées, cases_croix, size)
+                print('>', case_act)
             
             if case_act not in cases_occupées and check_choice(case_act, cases_occupées, size):
                 cases_occupées.append(case_act)

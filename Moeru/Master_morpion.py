@@ -15,7 +15,7 @@ def choix_de_case(size : int):
     return f'c{col}_l{lin}'
 
 def check_choice(case : str, cases : list, size : int):
-    ''' Paramètre - case (int) : id de la case à vérifier, cases (list) : listes des cases à vérifier, size (int) : taille de la grille (100 ou 250)
+    ''' Paramètre - case (int) : id de la case à vérifier, cases (list) : listes des cases occupées, size (int) : taille de la grille (100 ou 250)
     Return - "True" si la case est valide, "False" sinon '''
 
     if cases == []:
