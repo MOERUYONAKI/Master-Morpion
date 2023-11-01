@@ -140,7 +140,7 @@ def check_win(cases : list, size : int):
 
     return False
 
-def mega_morpion(size : int):
+def mega_morpion(size : int, niveau : str = 'normal'):
     ''' Paramètre - size (int) : taille de la grille (100 ou 250)
     Return - renvoie l'id du gagnant, "Full" si la partie est bloquée sans vainqueur, ou bien "Erreur" (str) '''
 
@@ -158,7 +158,11 @@ def mega_morpion(size : int):
                 case_act = choix_de_case(size)
 
             elif side == 2:
-                case_act = choice_ord(cases_occupées, cases_croix, size)
+                if niveau == 'facile':
+                    case_act = choice_ord(cases_occupées, cases_croix, size)
+
+                else:
+                    case_act = random_choice_ord(cases_occupées, size)
             
             print('>', case_act)
             
