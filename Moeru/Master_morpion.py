@@ -102,5 +102,3 @@ def master_morpion(size : int):
 
     else:
         return master_morpion(100)
-
-print(master_morpion(100))

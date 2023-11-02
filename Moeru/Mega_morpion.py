@@ -192,5 +192,3 @@ def mega_morpion(size : int, niveau : str = 'normal'):
 
     else:
         return mega_morpion(100)
-
-print(mega_morpion(100))
