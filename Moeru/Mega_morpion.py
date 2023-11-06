@@ -5,12 +5,12 @@ def choix_de_case(size : int):
     Return - renvoit l'id de la case choisie (str) '''
 
     # Choix de la colone
-    col = int(input("Choississez une colone \n> "))
+    col = int(input("Choisissez une colonne \n> "))
     col = 0 if col < 0 else col
     col = size - 1 if col >= size else col
 
     # Choix de la ligne
-    lin = int(input("Choississez une ligne \n> "))
+    lin = int(input("Choisissez une ligne \n> "))
     lin = 0 if lin < 0 else lin
     lin = size - 1 if lin >= size else lin
 
