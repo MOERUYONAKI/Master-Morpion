@@ -58,7 +58,7 @@ def morpion():
 
             else: # Morpions contre l'ordinateur (facile)
                 if mode == 1:
-                    result = basic.basic_morpion()
+                    result = rdm.random_morpion()
 
                 else:
                     result = mega.mega_morpion(size)
@@ -75,10 +75,10 @@ def morpion():
 
         elif adv == 2: # Morpions à deux joueurs
             if mode == 1:
-                result = rdm.random_morpion()
+                result = multi.jouer_morpion()
 
             else:
-                result = mega.mega_morpion(size, 'facile')
+                result = master.master_morpion(size, 'facile')
 
             # Résultats
             if result == 'Full':
