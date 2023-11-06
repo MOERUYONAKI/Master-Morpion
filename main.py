@@ -51,10 +51,10 @@ def morpion():
                     print("La grille est pleine... égalité")
 
                 elif result == 'Croix':
-                    print("Le joueur 1 à gagné !")
+                    print("Le joueur 1 a gagné !")
 
                 elif result == 'Rond':
-                    print("Le joueur 2 à gagné !")
+                    print("Le joueur 2 a gagné !")
 
             else: # Morpions contre l'ordinateur (facile)
                 if mode == 1:
@@ -68,10 +68,10 @@ def morpion():
                     print("La grille est pleine... égalité")
 
                 elif result == 'Croix':
-                    print("Le joueur 1 à gagné !")
+                    print("Le joueur 1 a gagné !")
 
                 elif result == 'Rond':
-                    print("Le joueur 2 à gagné !")
+                    print("Le joueur 2 a gagné !")
 
         elif adv == 2: # Morpions à deux joueurs
             if mode == 1:
@@ -85,9 +85,9 @@ def morpion():
                 print("La grille est pleine... égalité")
 
             elif result == 'Croix':
-                print("Le joueur 1 à gagné !")
+                print("Le joueur 1 a gagné !")
 
             elif result == 'Rond':
-                print("Le joueur 2 à gagné !")
+                print("Le joueur 2 a gagné !")
 
 morpion() # Lancement du Morpion
